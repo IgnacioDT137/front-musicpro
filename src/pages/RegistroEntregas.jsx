@@ -13,7 +13,7 @@ const Entregas = () => {
 
 
     useEffect(() => {
-        apiRequestNoToken('get', `http://localhost:3001/entregas`, {}).then(async (response) => {
+        apiRequestNoToken('get', `https://api-musicpro.onrender.com/entregas`, {}).then(async (response) => {
             setPedido(response.data.resultados)
         }).catch((error) => {
             console.log(error);

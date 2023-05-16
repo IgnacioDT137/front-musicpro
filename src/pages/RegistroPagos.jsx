@@ -13,7 +13,7 @@ const Pagos = () => {
 
 
     useEffect(() => {
-        apiRequestNoToken('get', `http://localhost:3001/pagos`, {}).then(async (response) => {
+        apiRequestNoToken('get', `https://api-musicpro.onrender.com/pagos`, {}).then(async (response) => {
             setPago(response.data.resultados)
         }).catch((error) => {
             console.log(error);

@@ -18,7 +18,7 @@ const UsuarioForm = () => {
 
     useEffect(() => {
         if (params.rut) {
-            apiRequestNoToken('get', `http://localhost:3001/CrudUsuarios/filtrar/${params.rut}`, {}).then(async (response) => {
+            apiRequestNoToken('get', `https://api-musicpro.onrender.com/CrudUsuarios/filtrar/${params.rut}`, {}).then(async (response) => {
                 const resultado = response.data.resultados;
                 console.log(resultado);
                 setUsuario({

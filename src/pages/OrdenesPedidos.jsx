@@ -12,7 +12,7 @@ const OrdenesPedidos = () => {
     const [pedidos, setPedidos] = useState([])
 
     const getPedidos = async () => {
-      await apiRequestNoToken('get', 'http://localhost:3001/pedidos-de-bod', {}).then(async (response) => {
+      await apiRequestNoToken('get', 'https://api-musicpro.onrender.com/pedidos-de-bod', {}).then(async (response) => {
             setPedidos(response.data.resultados)
       })
     }

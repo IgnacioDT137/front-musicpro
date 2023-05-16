@@ -19,7 +19,7 @@ const Registro = () =>{
                             }}
 
                             onSubmit={async(values) => {
-                                await apiRequestNoToken('post', 'http://localhost:3001/registro', values).then((response) => {
+                                await apiRequestNoToken('post', 'https://api-musicpro.onrender.com/registro', values).then((response) => {
                                     alert("Usuario registrado correctamente")
                                     window.location.href = "/login"
                                 }).catch((error) => {

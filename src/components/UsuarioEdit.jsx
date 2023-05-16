@@ -6,7 +6,7 @@ const UsuarioEdit = () => {
     const [usuarios, setUsuarios] = useState([])
 
     useEffect(() => {
-        apiRequestNoToken('get', 'http://localhost:3001/CrudUsuarios/usuarios', {}).then(async (response) => {
+        apiRequestNoToken('get', 'https://api-musicpro.onrender.com/CrudUsuarios/usuarios', {}).then(async (response) => {
             setUsuarios(response.data.resultados)
         }).catch((error) => {
             console.log(error);

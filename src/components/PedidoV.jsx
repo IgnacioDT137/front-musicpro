@@ -10,19 +10,19 @@ const PedidoV = ({pedido}) => {
     }, [])
 
     const aprobar = (id_pedido) => {
-        apiRequestNoToken('put', `http://localhost:3001/pedido-enviar-bod/${id_pedido}`).then(() => {
+        apiRequestNoToken('put', `https://api-musicpro.onrender.com/pedido-enviar-bod/${id_pedido}`).then(() => {
             window.location.reload(false)
         })
     }
 
     const rechazar = (id_pedido) => {
-        apiRequestNoToken('put', `http://localhost:3001/pedido-rechazar/${id_pedido}`).then(() => {
+        apiRequestNoToken('put', `https://api-musicpro.onrender.com/pedido-rechazar/${id_pedido}`).then(() => {
             window.location.reload(false)
         })
     }
 
     const despachar = (id_pedido) => {
-        apiRequestNoToken('put', `http://localhost:3001/pedido-despachar/${id_pedido}`).then(() => {
+        apiRequestNoToken('put', `https://api-musicpro.onrender.com/pedido-despachar/${id_pedido}`).then(() => {
             window.location.reload(false)
         })
     }
