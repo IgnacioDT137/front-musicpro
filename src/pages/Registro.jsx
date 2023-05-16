@@ -20,9 +20,10 @@ const Registro = () =>{
 
                             onSubmit={async(values) => {
                                 await apiRequestNoToken('post', 'http://localhost:3001/registro', values).then((response) => {
-                                    alert(JSON.stringify(response.data, null, 2))
+                                    alert("Usuario registrado correctamente")
+                                    window.location.href = "/login"
                                 }).catch((error) => {
-                                    alert(JSON.stringify(error.response.data, null, 2))
+                                    alert("ERROR AL REGISTRAR USUARIO")
                                 })
                             }}
                            
