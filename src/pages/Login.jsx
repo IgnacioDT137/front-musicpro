@@ -30,7 +30,7 @@ const Login = () => {
                                     alert("Bienvenido a MusicPro")
                                     window.location.href = "/"
                                 }).catch((error) => {
-                                    alert("ERROR")
+                                    alert("ERROR, USUARIO NO ENCONTRADO")
                                 })
                             }}
                         >
