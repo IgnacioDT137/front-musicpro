@@ -16,7 +16,7 @@ const Navbar = () => {
         cookies.remove('email')
         cookies.remove('tipo')
         setCarrito([])
-        localStorage.removeItem('carrito')
+        localStorage.setItem('carrito', "[]")
         alert("Vuelve pronto!")
         window.location.href = "/"
     }
