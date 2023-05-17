@@ -30,10 +30,16 @@ const CheckOut = () => {
                         if (values.despacho == "Retiro en local") {
                             values.direccion = "Tienda de MusicPro";
                         }
+
+                        var monto = total
+
+                        if (cookies.get('tipo') != undefined && cant_total > 4) {
+                            monto = total * 0.9
+                        }
                         
                         const data = {
                             metodo: values.seleccionado,
-                            total: total,
+                            total: monto,
                             rut: values.rut,
                             prods: carrito,
                             direccion: values.direccion
