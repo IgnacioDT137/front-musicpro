@@ -42,7 +42,7 @@ const UsuarioForm = () => {
                 enableReinitialize={true}
                 onSubmit={(values) => {
                     if (params.rut) {
-                        apiRequestNoToken('put', `http://localhost:3001/CrudUsuarios/actualizar/${params.rut}`, values).then(async(response) => {
+                        apiRequestNoToken('put', `https://api-musicpro.onrender.com/CrudUsuarios/actualizar/${params.rut}`, values).then(async(response) => {
                             const mensaje = response.data.MSG
                             alert(mensaje)
                             navigate("/crud-usuarios")
@@ -51,7 +51,7 @@ const UsuarioForm = () => {
                             alert(err_mensaje)
                         })
                     } else {
-                        apiRequestNoToken('post', 'http://localhost:3001/CrudUsuarios/crear', values).then(async(response) => {
+                        apiRequestNoToken('post', 'https://api-musicpro.onrender.com/CrudUsuarios/crear', values).then(async(response) => {
                             const mensaje = response.data.MSG
                             alert(mensaje)
                             window.location.reload(false)
