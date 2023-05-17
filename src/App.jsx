@@ -15,12 +15,14 @@ import DatosBanco from "./components/DatosBanco";
 import Pagos from "./pages/RegistroPagos";
 import Entregas from "./pages/RegistroEntregas";
 import Vendedor from "./pages/Vendedor";
+import Navbar from './components/Navbar'
 
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalProvider>
+        <Navbar />
         <Routes>
           <Route exact path="/login" element={<Login />}/>
           <Route exact path="/registro" element={<Registro />} />
