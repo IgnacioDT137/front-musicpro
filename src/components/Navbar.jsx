@@ -1,17 +1,21 @@
 import { useState } from "react"
 import Cookies from "universal-cookie";
+import { GlobalContext } from '../context/GlobalContext';
+import { useContext } from 'react';
 
 const cookies = new Cookies()
 
 const Navbar = () => {
 
     const [tipoUsuario, setTipoUsuario] = useState(cookies.get('tipo'))
+    const { carrito, setCarrito } = useContext(GlobalContext)
 
     const cerrarSesion = () => {
         cookies.remove('usuario')
         cookies.remove('rut')
         cookies.remove('email')
         cookies.remove('tipo')
+        setCarrito([])
         alert("Vuelve pronto!")
         window.location.href = "/"
     }
