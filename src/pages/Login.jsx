@@ -22,7 +22,7 @@ const Login = () => {
                             }}
 
                             onSubmit={async(values) => {
-                                await apiRequestNoToken('post', 'https://api-musicpro.onrender.com/login', values).then(async (response) => {
+                                await apiRequestNoToken('post', 'http://localhost:3001/login', values).then(async (response) => {
                                     cookies.set('usuario', response.data.nombre, {path:"/"})
                                     cookies.set('rut', response.data.rut, {path:"/"})
                                     cookies.set('email', response.data.email, {path:"/"})

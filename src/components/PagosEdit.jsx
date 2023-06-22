@@ -6,7 +6,7 @@ const PagoEdit = ({pago}) => {
     const navigate = useNavigate()
 
     const aprobar = (id) => {
-        apiRequestNoToken('put', `https://api-musicpro.onrender.com/aprobar-pago/${id}`, {}).then(() => {
+        apiRequestNoToken('put', `http://localhost:3001/aprobar-pago/${id}`, {}).then(() => {
             window.location.reload(false)
         }) 
     }

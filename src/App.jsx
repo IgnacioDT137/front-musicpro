@@ -16,6 +16,7 @@ import Pagos from "./pages/RegistroPagos";
 import Entregas from "./pages/RegistroEntregas";
 import Vendedor from "./pages/Vendedor";
 import Navbar from './components/Navbar'
+import FormularioPago from "./pages/FormularioPago";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/pagos" element={<Pagos/>}/>
           <Route exact path="/entregas" element={<Entregas/>}/>
           <Route exact path="/vendedor" element={<Vendedor/>}/>
+          <Route exact path="/form-pago/" element={<FormularioPago />}/>
         </Routes>
       </GlobalProvider>
     </BrowserRouter>

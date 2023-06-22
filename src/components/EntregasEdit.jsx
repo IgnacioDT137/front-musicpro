@@ -6,7 +6,7 @@ const EntregasEdit = ({pedido}) => {
     const navigate = useNavigate()
 
     const confirmar = (id) => {
-        apiRequestNoToken('put', `https://api-musicpro.onrender.com/confirmar-entrega/${id}`, {}).then(() => {
+        apiRequestNoToken('put', `http://localhost:3001/confirmar-entrega/${id}`, {}).then(() => {
             window.location.reload(false)
         }) 
     }

@@ -6,7 +6,7 @@ const UsuarioEdit = () => {
     const [usuarios, setUsuarios] = useState([])
 
     useEffect(() => {
-        apiRequestNoToken('get', 'https://api-musicpro.onrender.com/CrudUsuarios/usuarios', {}).then(async (response) => {
+        apiRequestNoToken('get', 'http://localhost:3001/CrudUsuarios/usuarios', {}).then(async (response) => {
             setUsuarios(response.data.resultados)
         }).catch((error) => {
             console.log(error);
@@ -41,7 +41,7 @@ const UsuarioEdit = () => {
                                     <div className="btn-group">
                                         <a href={"/crud-usuarios/editar/" + user.rut} className="btn btn-success">Editar</a>
                                         <button className="btn btn-danger" onClick={() => {
-                                            apiRequestNoToken('delete', `https://api-musicpro.onrender.com/CrudUsuarios/eliminar/${user.rut}`, {}).then(async(response) => {
+                                            apiRequestNoToken('delete', `http://localhost:3001/CrudUsuarios/eliminar/${user.rut}`, {}).then(async(response) => {
                                                 const mensaje = response.data.MSG
                                                 alert(mensaje)
                                                 window.location.reload(false)

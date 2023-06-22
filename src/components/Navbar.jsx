@@ -1,14 +1,27 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Cookies from "universal-cookie";
-import { GlobalContext } from '../context/GlobalContext';
-import { useContext } from 'react';
+import axios from "axios";
 
 const cookies = new Cookies()
 
 const Navbar = () => {
 
+    const setDolar = async () => {
+        await axios.get(
+            "api/SieteRestWS/SieteRestWS.ashx?user=210519246&pass=1uxu0j48Bdxq&timeseries=F073.TCO.PRE.Z.D&firstdate=2023-06-13"
+        ).then(async (response) => {
+            const valor = await response.data.Series.Obs[0].value
+            cookies.set("dolar", valor, {path: "/"})
+        }).catch(e => {
+            return
+        })
+    }
+
+    useEffect(() => {
+        setDolar()
+    }, [])
+
     const [tipoUsuario, setTipoUsuario] = useState(cookies.get('tipo'))
-    const { carrito, setCarrito } = useContext(GlobalContext)
 
     const cerrarSesion = () => {
         cookies.remove('usuario')
@@ -19,19 +32,39 @@ const Navbar = () => {
         window.location.href = "/"
     }
 
+    const removeDolar = () => {
+        cookies.remove("useDolar", {path: "/"})
+        window.location.reload(false)
+    }
+
+    const boton = async () => {
+        console.log(cookies.get("dolar"));
+        if (cookies.get("useDolar") === undefined) {
+            cookies.set("useDolar", true, {path: "/"})
+            window.location.reload(false)
+        } else {
+            removeDolar()
+        }
+    }
+
     return ( 
-    <nav class="navbar navbar-expand-lg bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand text-light" href="/">MusicPro&#127925;</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-lg bg-dark">
+        <div className="container-fluid">
+            <a className="navbar-brand text-light" href="/">MusicPro&#127925;</a>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div className="collapse navbar-collapse" id="navbarNav">
             {tipoUsuario == undefined ? 
                 <ul className="navbar-nav">
                     <li className="nav-item"><a className="nav-link text-light" href="/">Inicio&#127968;</a></li>
                     <li className="nav-item"><a className="nav-link text-light" href="/carrito">Carrito&#128722;</a></li>
                     <li className="nav-item"><a className="nav-link text-light" href="/login">Iniciar sesión</a></li>
+                    <li className="nav-item">
+                        <button className="btn btn-danger" onClick={(e) => {e.preventDefault(); boton()}}>
+                            {cookies.get("useDolar") != undefined ? "Convertir a CLP" : "Convertir a USD"}
+                        </button>
+                    </li>
                 </ul>
                 :
                 ""

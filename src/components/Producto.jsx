@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import Swal from "sweetalert2";
 import withReactContent from 'sweetalert2-react-content'
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies()
 
 const mySwal = withReactContent(Swal)
 
@@ -19,7 +22,7 @@ const Producto = ({producto}) => {
           <img src={producto.imagen} alt="imagen" />
           <div className="mt-3">
             <p>{producto.descripcion}</p>
-            <h3>Precio: ${producto.precio}</h3>
+            <h3>${cookies.get("useDolar") == undefined ? producto.precio : parseFloat(producto.precio / cookies.get("dolar")).toFixed(2)}</h3>
             <h3>Stock: {item ? `${producto.stock - item.cantidad}`: `${producto.stock}`}</h3>
           </div>
         </div>,

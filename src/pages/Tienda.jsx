@@ -11,7 +11,7 @@ const Tienda = () => {
     const [categoria, setCategoria] = useState("")
 
     useEffect(() => {
-        apiRequestNoToken('get', `https://api-musicpro.onrender.com/productos/${params.id_categoria}`, {}).then(async (response) => {
+        apiRequestNoToken('get', `http://localhost:3001/productos/${params.id_categoria}`, {}).then(async (response) => {
             switch (params.id_categoria) {
                 case "1":
                     setCategoria("Guitarras")
@@ -46,7 +46,7 @@ const Tienda = () => {
         <div className="row mw-100 row-cols-3 p-2">
             {productos.map(p => {
                 return (
-                    <Producto producto={p}/>
+                    <Producto producto={p} key={p.codigo}/>
                 )
             })}
         </div>

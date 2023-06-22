@@ -45,15 +45,10 @@ const CheckOut = () => {
                             direccion: values.direccion
                         }
 
-                        await apiRequestNoToken('post', 'https://api-musicpro.onrender.com/pagar', data).then(async(response) => {
+                        await apiRequestNoToken('post', 'http://localhost:3001/pagar', data).then(async(response) => {
+                            alert(JSON.stringify(response.data))
                             setCarrito([])
-                            const msg = response.data.MSG
-                            alert(msg)
-                            if (data.metodo == "Transferencia") {
-                                navigate("/datos-banco")
-                            } else {
-                                navigate("/transbank")
-                            }
+                            navigate("/form-pago", {state: {url: response.data.pago.url, token: response.data.pago.token}})
                         })
                     }}
                 >

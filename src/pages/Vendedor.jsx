@@ -17,23 +17,23 @@ const Vendedor = () => {
 
     const getAll = async () => {
 
-        await apiRequestNoToken('get', 'https://api-musicpro.onrender.com/productos', {}).then(async (response) => {
+        await apiRequestNoToken('get', 'http://localhost:3001/productos', {}).then(async (response) => {
             setBodega(response.data.resultados);
         })
 
-        await apiRequestNoToken('get', 'https://api-musicpro.onrender.com/pedidos-pendientes', {}).then(async (response) => {
+        await apiRequestNoToken('get', 'http://localhost:3001/pedidos-pendientes', {}).then(async (response) => {
             setPendientes(response.data.resultados)
         })
 
-        await apiRequestNoToken('get', 'https://api-musicpro.onrender.com/pedidos-de-bod', {}).then(async (response) => {
+        await apiRequestNoToken('get', 'http://localhost:3001/pedidos-de-bod', {}).then(async (response) => {
             setBodeguero(response.data.resultados)
         })
 
-        await apiRequestNoToken('get', 'https://api-musicpro.onrender.com/pedidos-despachar', {}).then(async (response) => {
+        await apiRequestNoToken('get', 'http://localhost:3001/pedidos-despachar', {}).then(async (response) => {
             setDespachar(response.data.resultados)
         })
 
-        await apiRequestNoToken('get', 'https://api-musicpro.onrender.com/pedidos-rechazados', {}).then(async (response) => {
+        await apiRequestNoToken('get', 'http://localhost:3001/pedidos-rechazados', {}).then(async (response) => {
             setRechazados(response.data.resultados)
         })
     }

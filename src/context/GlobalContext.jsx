@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
@@ -18,7 +19,6 @@ export const GlobalProvider = ({children}) => {
     carrito.map(i => {
       cant_total += i.cantidad
     })
-    
 
     // Recuperar los datos del carrito desde localStorage al cargar la página
     useEffect(() => {

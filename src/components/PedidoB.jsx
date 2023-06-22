@@ -10,12 +10,12 @@ const PedidoB = ({pedido}) => {
     }, [])
 
     const aprobar = (id_pedido) => {
-        apiRequestNoToken('put', `https://api-musicpro.onrender.com/pedido-aceptar-bod/${id_pedido}`, {ped: JSON.parse(pedido.productos)}).then((response) => {
+        apiRequestNoToken('put', `http://localhost:3001/pedido-aceptar-bod/${id_pedido}`, {ped: JSON.parse(pedido.productos)}).then((response) => {
             window.location.reload(false)
         })
     }
     const rechazar = (id_pedido) => {
-        apiRequestNoToken('put', `https://api-musicpro.onrender.com/pedido-rechazar-bod/${id_pedido}`).then(() => {
+        apiRequestNoToken('put', `http://localhost:3001/pedido-rechazar-bod/${id_pedido}`).then(() => {
             window.location.reload(false)
         })
     }
