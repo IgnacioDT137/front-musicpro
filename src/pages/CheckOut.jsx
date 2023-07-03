@@ -36,7 +36,7 @@ const CheckOut = () => {
                         if (cookies.get('tipo') != undefined && cant_total > 4) {
                             monto = total * 0.9
                         }
-                        
+
                         const data = {
                             metodo: values.seleccionado,
                             total: monto,
@@ -46,6 +46,7 @@ const CheckOut = () => {
                         }
 
                         await apiRequestNoToken('post', 'http://localhost:3001/pagar', data).then(async(response) => {
+                            console.log(monto);
                             alert(JSON.stringify(response.data))
                             setCarrito([])
                             navigate("/form-pago", {state: {url: response.data.pago.url, token: response.data.pago.token}})
@@ -127,7 +128,8 @@ const CheckOut = () => {
                     </ul>
                     <hr />
                     <p>{cookies.get('tipo') == 0 && cant_total > 4 ? "Usted tiene un descuento de un 10% por ser miembro y llevar mas de 4 artículos" : ""}</p>   
-                    <h3>TOTAL: ${cookies.get('tipo') == 0 && cant_total > 4 ? (total * 0.9) : total}</h3>
+                    <h3 hidden={!cookies.get("useDolar")}>TOTAL: ${cookies.get('tipo') == 0 && cant_total > 4 ? ((total * 0.9) / cookies.get("dolar")).toFixed(2) : (total / cookies.get("dolar")).toFixed(2)}</h3>
+                    <h3 hidden={cookies.get("useDolar")}>TOTAL: ${cookies.get('tipo') == 0 && cant_total > 4 ? (total * 0.9) : total}</h3>
                 </div>
             </div>
         </div>

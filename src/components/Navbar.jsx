@@ -7,8 +7,10 @@ const cookies = new Cookies()
 const Navbar = () => {
 
     const setDolar = async () => {
+        var fecha = new Date()
+        var firstdate = fecha.toISOString().slice(0,10)
         await axios.get(
-            "api/SieteRestWS/SieteRestWS.ashx?user=210519246&pass=1uxu0j48Bdxq&timeseries=F073.TCO.PRE.Z.D&firstdate=2023-06-13"
+            `api/SieteRestWS/SieteRestWS.ashx?user=210519246&pass=1uxu0j48Bdxq&timeseries=F073.TCO.PRE.Z.D&firstdate=${firstdate}`
         ).then(async (response) => {
             const valor = await response.data.Series.Obs[0].value
             cookies.set("dolar", valor, {path: "/"})
