@@ -46,10 +46,13 @@ const CheckOut = () => {
                         }
 
                         await apiRequestNoToken('post', 'http://localhost:3001/pagar', data).then(async(response) => {
-                            console.log(monto);
-                            alert(JSON.stringify(response.data))
                             setCarrito([])
-                            navigate("/form-pago", {state: {url: response.data.pago.url, token: response.data.pago.token}})
+                            if (values.seleccionado == "Transferencia") {
+                                alert(response.data.MSG)
+                                navigate("/datos-banco")
+                            } else {
+                                navigate("/form-pago", {state: {url: response.data.pago.url, token: response.data.pago.token}})
+                            }
                         })
                     }}
                 >
@@ -99,12 +102,7 @@ const CheckOut = () => {
                                             WebPayPLUS
                                         </label>
                                     </div>  
-                                    <div className="form-check">
-                                        <label className="form-check-label" >
-                                            <Field className="form-check-input" type="radio" name="seleccionado" value="Tarjeta de crédito" required />
-                                            Tarjeta de crédito
-                                        </label>
-                                    </div>
+                                    
                                     <div className="form-check mb-3">
                                         <label className="form-check-label" >
                                             <Field className="form-check-input" type="radio" name="seleccionado" value="Transferencia"  required/>
@@ -120,6 +118,9 @@ const CheckOut = () => {
             </div>
             <div className="card">
                 <div className="card-body">
+                    <div class="alert alert-primary" role="alert" hidden={cookies.get("tipo") == 0}>
+                        Le recomendamos <a href="/login">iniciar sesión</a> para descuento por compras de más de 4 productos
+                    </div>
                     <h3>Productos:</h3>
                     <ul>
                         {carrito.map(i => {

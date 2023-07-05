@@ -77,6 +77,11 @@ const Navbar = () => {
                     <li className="nav-item"><a className="nav-link text-light" href="/">Inicio&#127968;</a></li>
                     <li className="nav-item"><a className="nav-link text-light" href="/carrito">Carrito&#128722;</a></li>
                     <li className="nav-item"><button className="nav-link text-light" onClick={() => {cerrarSesion()}}>Cerrar sesión</button></li>
+                    <li className="nav-item">
+                        <button className="btn btn-danger" onClick={(e) => {e.preventDefault(); boton()}}>
+                            {cookies.get("useDolar") != undefined ? "Convertir a CLP" : "Convertir a USD"}
+                        </button>
+                    </li>
                 </ul>
                 :
                 ""
@@ -88,6 +93,11 @@ const Navbar = () => {
                     <li className="nav-item"><a className="nav-link text-light" href="/carrito">Carrito&#128722;</a></li>
                     <li className="nav-item"><a className="nav-link text-light" href="/crud-usuarios">Panel de usuarios</a></li>
                     <li className="nav-item"><button className="nav-link text-light" onClick={() => {cerrarSesion()}}>Cerrar sesión</button></li>
+                    <li className="nav-item">
+                        <button className="btn btn-danger" onClick={(e) => {e.preventDefault(); boton()}}>
+                            {cookies.get("useDolar") != undefined ? "Convertir a CLP" : "Convertir a USD"}
+                        </button>
+                    </li>
                 </ul>
                 :
                 ""
@@ -99,6 +109,11 @@ const Navbar = () => {
                     <li className="nav-item"><a className="nav-link text-light" href="/carrito">Carrito&#128722;</a></li>
                     <li className="nav-item"><a className="nav-link text-light" href="/vendedor">Panel de pedidos pendientes</a></li>
                     <li className="nav-item"><button className="nav-link text-light" onClick={() => {cerrarSesion()}}>Cerrar sesión</button></li>
+                    <li className="nav-item">
+                        <button className="btn btn-danger" onClick={(e) => {e.preventDefault(); boton()}}>
+                            {cookies.get("useDolar") != undefined ? "Convertir a CLP" : "Convertir a USD"}
+                        </button>
+                    </li>
                 </ul>
                 :
                 ""
@@ -110,6 +125,11 @@ const Navbar = () => {
                     <li className="nav-item"><a className="nav-link text-light" href="/carrito">Carrito&#128722;</a></li>
                     <li className="nav-item"><a className="nav-link text-light" href="/OrdenesPedidos">Panel de ordenes</a></li>
                     <li className="nav-item"><button className="nav-link text-light" onClick={() => {cerrarSesion()}}>Cerrar sesión</button></li>
+                    <li className="nav-item">
+                        <button className="btn btn-danger" onClick={(e) => {e.preventDefault(); boton()}}>
+                            {cookies.get("useDolar") != undefined ? "Convertir a CLP" : "Convertir a USD"}
+                        </button>
+                    </li>
                 </ul>
                 :
                 ""
@@ -122,6 +142,11 @@ const Navbar = () => {
                     <li className="nav-item"><a className="nav-link text-light" href="/entregas">Panel de envios</a></li>
                     <li className="nav-item"><a className="nav-link text-light" href="/pagos">Panel de pagos</a></li>
                     <li className="nav-item"><button className="nav-link text-light" onClick={() => {cerrarSesion()}}>Cerrar sesión</button></li>
+                    <li className="nav-item">
+                        <button className="btn btn-danger" onClick={(e) => {e.preventDefault(); boton()}}>
+                            {cookies.get("useDolar") != undefined ? "Convertir a CLP" : "Convertir a USD"}
+                        </button>
+                    </li>
                 </ul>
                 :
                 ""

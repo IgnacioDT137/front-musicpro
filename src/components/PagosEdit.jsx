@@ -16,10 +16,10 @@ const PagoEdit = ({pago}) => {
             <td>{pago.id_pago}</td>
             <td>{pago.metodo}</td>
             <td>${pago.total}</td>
-            <td>{pago.aprobado == 1 ? "Aprobado" : "Pendiente"}</td>
+            <td>{pago.aprobado == "AUTHORIZED" ? "Aprobado" : "Pendiente"}</td>
             <td>
                 <div className="btn-group">
-                    <button onClick={() => aprobar(pago.id_pago)} className={pago.aprobado == 1 ? "btn btn-success disabled" : "btn btn-success"}>Aprobar</button>
+                    <button onClick={() => aprobar(pago.id_pago)} className={pago.aprobado == "AUTHORIZED" ? "btn btn-success disabled" : "btn btn-success"}>Aprobar</button>
                 </div>
             </td>
         </tr>              
